@@ -11,6 +11,7 @@ export default {
         slide: "slide var(--speed) ease-in-out infinite alternate",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         backgroundPositionSpin:"background-position-spin 3000ms infinite alternate",
+        meteor: "meteor 5s linear infinite",
       },
       keyframes: {
         "spin-around": {
@@ -40,6 +41,14 @@ export default {
         "background-position-spin": {
           "0%": { backgroundPosition: "top center" },
           "100%": { backgroundPosition: "bottom center" },
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
+          "70%": { opacity: 1 },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: 0,
+          },
         },
       },
     },

@@ -12,15 +12,15 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="flex justify-center w-full">
-      <div className="fixed top-5 w-2/4 rounded-3xl bg-gradient-to-r from-[#ff2975] to-sky-300 z-20">
+      <div className="fixed top-5 w-3/4 rounded-3xl bg-gradient-to-r from-gray-300 to-sky-200 z-20 px-20">
         <div className="container mx-auto flex justify-between items-center p-4">
-          <div className="text-white text-lg font-bold">MyBrand</div>
+          <div className="text-gray-500 text-xl font-bold">Ronald.rnd</div>
           <div className="hidden md:flex space-x-4">
             {links.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className="text-white hover:text-gray-300"
+                className="text-gray-500 hover:text-gray-300 text-xl"
               >
                 {link.label}
               </a>
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
           <div className="md:hidden">
             <button
               type="button"
-              className="text-white focus:outline-none focus:ring-2 focus:ring-white"
+              className="text-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
               <a
                 key={index}
                 href={link.href}
-                className="block text-white hover:text-gray-300"
+                className="block text-gray-500 hover:text-gray-300"
               >
                 {link.label}
               </a>
