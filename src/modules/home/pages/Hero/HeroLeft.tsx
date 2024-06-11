@@ -1,8 +1,8 @@
+import BoxReveal from "../../../../components/magicui/box-reveal";
+import ShimmerButton from "../../../../components/magicui/shimmer-button";
 
-import BoxReveal from "../../magicui/box-reveal";
-import ShimmerButton from "../../magicui/shimmer-button";
 
-export function LandingLeft() {
+export default function HeroLeft() {
   return ( 
     <div className="min-h-full w-full max-w-[35rem] items-stretch justify-center  overflow-hidden pt-8 flex flex-col p-5 gap-10">
       <BoxReveal boxColor={"#5046e6"} duration={0.5}>

@@ -1,7 +1,8 @@
-import { NeonGradientCard } from "../../magicui/neon-gradient-card";
-import image from "../../../assets/images/received_1652064728936012-removebg-preview.png"
 
-export function LandingRight() {
+import { NeonGradientCard } from "../../../../components/magicui/neon-gradient-card";
+import image from "../../../../assets/images/received_1652064728936012-removebg-preview.png"
+
+export default function HeroRight() {
   return (
     <div>
 

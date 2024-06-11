@@ -1,19 +1,18 @@
 import React from "react";
-import Navbar from "./components/Navbar/Navbar";
-import LandingPage from "./components/LandingPage/LandingPage";
-import About from "./components/About/About";
+import { BrowserRouter } from "react-router-dom";
+import AuthWrapper from "./modules/auth/components/AuthWrapper";
+import Menu from "./modules/menu/components/Menu";
+
 
 
 const App: React.FC = () => {
   return (
-    <div>
-      <Navbar />
-      <main>
-        <div className="h-40"></div>
-        <LandingPage />
-        <About />
-      </main>
-    </div>
+    <>
+    <BrowserRouter>
+      <Menu />
+      <AuthWrapper />
+    </BrowserRouter>
+    </>
   );
 };
 
