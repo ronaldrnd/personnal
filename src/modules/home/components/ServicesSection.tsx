@@ -4,9 +4,9 @@ import SectionTitle from "./common/SectionTitle";
 
 export default function ServicesSection() {
   return (
-    <>
-      <SectionTitle title="THIS IS WHAT I OFFER"/>
+    <div className="p-2 max-w-[80rem] lg:w-3/4 flex justify-center flex-col">
+      <SectionTitle title="This is what I offer"/>
         <ServicesSectionPage />
-    </>
+    </div>
   )
 }

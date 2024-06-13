@@ -4,8 +4,8 @@ interface SectionTitleProps {
 
 export default function SectionTitle({ title }: SectionTitleProps) {
   return (
-    <div>
-      <h1 className="text-5xl font-bold">{title ? title : ""}</h1>
+    <div className="py-10">
+      <h1 className="text-4xl font-bold w-full text-center">{title ? title : ""}</h1>
     </div>
   );
 }

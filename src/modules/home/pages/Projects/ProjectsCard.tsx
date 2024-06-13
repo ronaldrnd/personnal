@@ -1,45 +1,41 @@
-import React, { ReactNode } from "react";
+import React from 'react';
 
 interface ProjectCardProps {
-  children: ReactNode;
+  image: string;
+  title: string;
+  description: string;
+  repoUrl?: string;
+  liveUrl?: string;
+  detailsUrl?: string;
 }
 
-interface ImageProps {
-  children: ReactNode;
-}
-
-interface ContentProps {
-  children: ReactNode;
-}
-
-const ProjectCard: React.FC<ProjectCardProps> & {
-  Image: React.FC<ImageProps>;
-  Content: React.FC<ContentProps>;
-} = ({ children }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ image, title, description, repoUrl, liveUrl, detailsUrl }) => {
   return (
-    <div className="relative group w-full h-full overflow-hidden">
-      {children}
+    <div className="flex flex-col md:flex-row bg-white shadow-md rounded-lg overflow-hidden">
+      <img src={image} alt={title} className="w-full md:w-1/3 object-cover" />
+      <div className="p-4 w-full md:w-2/3">
+        <h2 className="text-xl font-semibold mb-2">{title}</h2>
+        <p className="text-gray-700 mb-4">{description}</p>
+        <div className="flex space-x-3">
+          {repoUrl && (
+            <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+              Repo
+            </a>
+          )}
+          {liveUrl && (
+            <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+              Live
+            </a>
+          )}
+          {detailsUrl && (
+            <a href={detailsUrl} target="_blank" rel="noopener noreferrer" className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
+              Details
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
-
-const Image: React.FC<ImageProps> = ({ children }) => {
-  return (
-    <div className="w-full h-full">
-      {children}
-    </div>
-  );
-};
-
-const Content: React.FC<ContentProps> = ({ children }) => {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-      {children}
-    </div>
-  );
-};
-
-ProjectCard.Image = Image;
-ProjectCard.Content = Content;
 
 export default ProjectCard;

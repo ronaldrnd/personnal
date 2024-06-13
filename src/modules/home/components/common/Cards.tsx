@@ -29,15 +29,18 @@ const Card: React.FC<CardProps> = ({
       {imageUrl && (
         <img className="w-full h-48 object-cover" src={imageUrl} alt={title} />
       )}
-      <div className="px-6 py-4 flex justify-center flex-col items-center">
+
+      <div className="px-6 py-4 flex justify-start flex-col items-center">
         <div className="font-bold text-xl mb-2">{title}</div>
-        <p className="text-gray-700 text-base w-full whitespace-pre-wrap">{description}</p>
+        <p className="text-gray-700 text-base w-full whitespace-pre-wrap">
+          {description}
+        </p>
         {children}
       </div>
       {ctaText && (
         <div className="px-6 pt-4 pb-2 flex justify-center">
           <button
-            className="text-gray-100 py-2 px-4 rounded-xl bg-gray-900  transition duration-300"
+            className="text-gray-100 py-2 px-4 rounded-xl bg-gray-900  transition duration-300 text-xl"
             onClick={(e) => {
               e.stopPropagation(); // Pour éviter de déclencher onClick de la carte
               if (ctaOnClick) ctaOnClick();
@@ -47,6 +50,7 @@ const Card: React.FC<CardProps> = ({
           </button>
         </div>
       )}
+
       {footer && <div className="px-6 pt-4 pb-2">{footer}</div>}
     </div>
   );
