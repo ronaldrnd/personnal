@@ -1,7 +1,10 @@
+import ProjectList from "../modules/Pojects/pages/ProjectsList";
 
 
 export default function Projects() {
   return (
-    <div>Projects</div>
+    <div>
+      <ProjectList />
+    </div>
   )
 }

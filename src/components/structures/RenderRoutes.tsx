@@ -15,6 +15,7 @@ import Skills from "../../modules/admin/components/Skills";
 import Certifications from "../../modules/admin/components/Certifications";
 import Account from "../../modules/admin/components/Account";
 import FrontOffice from "../../modules/FO/FO";
+import ProjectDetailPage from "../../modules/admin/modules/Pojects/pages/ProjectDetails";
 
 
 export const RenderRoutes = () => {
@@ -31,10 +32,13 @@ export const RenderRoutes = () => {
       >
         <Route path="home" element={<Home />} />
         <Route path="informations" element={<Informations />} />
-        <Route path="projects" element={<Projects />} />
         <Route path="skills" element={<Skills />} />
         <Route path="certifications" element={<Certifications />} />
         <Route path="account" element={<Account />} />
+        {/* <Route path="projects"> */}
+          <Route path="projects/:id" element={<ProjectDetailPage />} />
+          <Route path="projects" element={<Projects />} />
+        {/* </Route> */}
       </Route>
       <Route element={<FrontOffice />}>
         <Route path="/" element={<HomePage />} />

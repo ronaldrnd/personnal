@@ -1,9 +1,16 @@
 // src/api/axiosPrivate.ts
 import axios from 'axios';
 import axiosPublic from './axiosPublic';
+import {
+  getAccessToken,
+  getRefreshToken,
+  setAccessToken,
+  removeAccessToken,
+  removeRefreshToken,
+} from '../utils/tokenUtils';
 
 const axiosPrivate = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'http://localhost:1338/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -12,9 +19,11 @@ const axiosPrivate = axios.create({
 
 axiosPrivate.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('accessToken'); // Suppose que vous stockez le token dans le localStorage
+    const token = getAccessToken(); // Récupérer le token des cookies
+    console.log("token", token);
+    
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
@@ -24,20 +33,31 @@ axiosPrivate.interceptors.request.use(
 );
 
 axiosPrivate.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Vérifie si le token est présent dans les en-têtes de réponse
+    const newAccessToken = response.headers['x-access-token'];
+    if (newAccessToken) {
+      setAccessToken(newAccessToken);
+      axiosPrivate.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+    }
+    return response;
+  },
   async (error) => {
     const originalRequest = error.config;
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         const response = await axiosPublic.post('/auth/refresh-token', {
-          token: localStorage.getItem('refreshToken'),
+          token: getRefreshToken(),
         });
         const { accessToken } = response.data;
-        localStorage.setItem('accessToken', accessToken);
-        axiosPrivate.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+        setAccessToken(accessToken);
+        axiosPrivate.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
         return axiosPrivate(originalRequest);
       } catch (err) {
+        removeAccessToken();
+        removeRefreshToken();
         return Promise.reject(err);
       }
     }
