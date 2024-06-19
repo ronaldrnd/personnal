@@ -3,9 +3,9 @@ import { useAuthStore } from '../store/authStore';
 import { ReactNode } from 'react';
 
 const ProtectedRoute = ({ redirectPath = '/', children }: { redirectPath?: string, children: ReactNode }) => {
-    const { user } = useAuthStore();
+    const { isAuthenticated } = useAuthStore();
 
-    if (!user.isAuthenticated) {
+    if (isAuthenticated) {
         return <Navigate to={redirectPath} replace />;
     }
 

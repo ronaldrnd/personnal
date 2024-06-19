@@ -1,55 +1,47 @@
-import { useState } from "react";
+import { getAccessToken, removeAccessToken, removeRefreshToken, setAccessToken, setRefreshToken } from '../../../utils/tokenUtils';
+import axiosPrivate from '../../../utils/axiosPrivate';
+import axiosPublic from '../../../utils/axiosPublic';
+import { useAuthStore } from '../store/authStore';
+import { useState } from 'react';
 
-interface User {
-  name: string;
-  isAuthenticated: boolean;
-}
 
-interface Login {
-  username: string;
-  password: string;
-}
+export const useAuth = () => {
+  const {isAuthenticated, setIsAuthenticated} = useAuthStore();
+  const [error, setError] = useState()
 
-/**
- * A custom hook for user authentication.
- *
- * @returns An object containing the user state, login and logout functions.
- */
-export default function useAuth() {
-  /**
-   * The current user state.
-   *
-   * @type {User}
-   */
-  const [user, setUser] = useState<User>({name: "", isAuthenticated: false});
+  const login = async (username: string, password: string) => {
+    try {
+      const response = await axiosPublic.post('/sessions', { username, password });
+      const { accessToken, refreshToken } = response.data;
 
-  /**
-   * Logs the user in with the provided username and password.
-   *
-   * @param {Login} credentials - An object containing the username and password.
-   * @returns A Promise that resolves to "Authenticated" if the password is correct, or rejects with "Incorrect password".
-   */
-  const login = ({username, password}: Login) => {
-    return new Promise((resolve, reject) => {
-      if (password === "password") {
-        setUser({ name: username, isAuthenticated: true });
-        resolve("Authenticated");
-      } else {
-        reject("Incorrect password");
-      }
-    });
+      setAccessToken(accessToken); // Stocke le token JWT dans un cookie
+      setRefreshToken(refreshToken)
+      setIsAuthenticated(true);
+    } catch (error:any) {
+      console.error('Erreur de connexion:', error);
+      setError(error.message)
+    }
   };
 
-  /**
-   * Logs the user out.
-   */
-  const logout = () => {
-    setUser({...user, isAuthenticated: false});
+  const logout = async () => {
+    try {
+      await axiosPrivate.post('/logout');
+      removeAccessToken(); // Supprime le token JWT du cookie
+      removeRefreshToken()
+      setIsAuthenticated(false);
+    } catch (error) {
+      console.error('Erreur de déconnexion:', error);
+    }
   };
 
-  return {
-    user,
-    login,
-    logout,
+  const checkAuth = () => {
+    const accessToken = getAccessToken();
+    if (accessToken) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
   };
-}
+
+  return { isAuthenticated, login, logout, checkAuth, error };
+};

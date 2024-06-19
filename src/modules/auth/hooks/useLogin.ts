@@ -1,16 +1,22 @@
 import { useState } from 'react';
-import { useAuthStore } from '../store/authStore';
+import axiosPublic from '../../../utils/axiosPublic';
 
 export const useLogin = () => {
-    const { login } = useAuthStore();
     const [error, setError] = useState<string | null>(null);
 
     const handleLogin = async (userName: string, password: string) => {
         try {
-            await login(userName, password);
+            const response = await axiosPublic.post('/sessions', { userName, password });
+            const { accessToken, refreshToken } = response.data; // Supposons que l'API renvoie ces tokens
+
+            // Stockage des tokens dans les cookies ou tout autre gestionnaire
+            // Exemple fictif de stockage dans les cookies
+            document.cookie = `accessToken=${accessToken}; path=/`;
+            document.cookie = `refreshToken=${refreshToken}; path=/`;
+
             setError(null); // Réinitialise l'erreur si la connexion réussit
-        } catch (err) {
-            setError(err as string); // Capture et définit l'erreur
+        } catch (err: any) {
+            setError(err.response.data.message || 'Erreur lors de la connexion'); // Capture et définit l'erreur
         }
     };
 
