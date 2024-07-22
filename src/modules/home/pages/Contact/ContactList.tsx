@@ -18,9 +18,9 @@ const ContactList: React.FC<ContactListProps> = ({ contacts }) => {
   return (
     <div className="w-full">
       {contacts.map((contact, index) => (
-        <div key={index} className="p-4 rounded-md ">
+        <div key={index} className="p-4 rounded-md flex flex-col gap-10">
           <h3 className="text-xl font-semibold">{contact.name}</h3>
-          <ul className="mt-2 flex flex-col  gap-5 text-xl">
+          <ul className="mt-2 flex flex-col  gap-10 text-xl">
             {contact.phone && (
               <li className="flex items-center">
                 <span className="mr-2">

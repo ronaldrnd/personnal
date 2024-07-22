@@ -1,8 +1,9 @@
 import { FaGithub, FaLinkedin, FaMailchimp } from "react-icons/fa";
-import ShimmerButton from "../../../../components/magicui/shimmer-button";
 import Meteors from "../../../../components/magicui/lmeteors";
 import image from "../../../../assets/images/20240318_075247_HDR.jpg";
 import AboutSectionLeft from "./AboutSectionLeft";
+import StyledButton from "../../components/common/StyledButton";
+import resume from "../../../../assets/pdf/CV-Ronald-Randrianomendray.en.pdf"
 
 export default function AboutSectionPage() {
   return (
@@ -22,11 +23,7 @@ export default function AboutSectionPage() {
           </p>
 
           <div>
-            <ShimmerButton className="shadow-2xl">
-              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                Download my resume
-              </span>
-            </ShimmerButton>
+          <StyledButton text="Download my Resume" href={resume} download="resume.pdf"/>
           </div>
           <div className="flex justify-center gap-10">
             <div className="border-2 rounded-xl">

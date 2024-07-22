@@ -23,7 +23,7 @@ const Input: React.FC<InputProps> = ({
       placeholder={placeholder}
       className={`${
         darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-      } border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500 w-full`}
+      } border border-gray-300 rounded-xl py-4 px-4 focus:outline-none focus:border-blue-500 w-full`}
     />
     </>
   );

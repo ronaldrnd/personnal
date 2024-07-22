@@ -1,38 +1,32 @@
+// src/components/ProjectCard.tsx
 import React from 'react';
+import { FaGithub, FaExternalLinkAlt, FaInfoCircle } from 'react-icons/fa';
 
 interface ProjectCardProps {
-  image: string;
-  title: string;
+  name: string;
   description: string;
-  repoUrl?: string;
-  liveUrl?: string;
-  detailsUrl?: string;
+  technologies: string[];
+  repoLink: string;
+  liveLink: string;
+  detailsLink: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ image, title, description, repoUrl, liveUrl, detailsUrl }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, technologies, repoLink, liveLink, detailsLink }) => {
   return (
-    <div className="flex flex-col md:flex-row bg-white shadow-md rounded-lg overflow-hidden">
-      <img src={image} alt={title} className="w-full md:w-1/3 object-cover" />
-      <div className="p-4 w-full md:w-2/3">
-        <h2 className="text-xl font-semibold mb-2">{title}</h2>
-        <p className="text-gray-700 mb-4">{description}</p>
-        <div className="flex space-x-3">
-          {repoUrl && (
-            <a href={repoUrl} target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-              Repo
-            </a>
-          )}
-          {liveUrl && (
-            <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
-              Live
-            </a>
-          )}
-          {detailsUrl && (
-            <a href={detailsUrl} target="_blank" rel="noopener noreferrer" className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
-              Details
-            </a>
-          )}
-        </div>
+    <div className="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
+      <h3 className="text-xl font-semibold mb-2">{name}</h3>
+      <p className="text-gray-700 mb-4">{description}</p>
+      <p className="text-gray-600 mb-4"><strong>Technologies:</strong> {technologies.join(', ')}</p>
+      <div className="flex justify-center mt-4 gap-10">
+        <a href={detailsLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors">
+          <FaInfoCircle className="inline text-2xl" />
+        </a>
+        <a href={repoLink} target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-blue-800 transition-colors">
+          <FaGithub className="inline text-2xl" />
+        </a>
+        <a href={liveLink} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-blue-800 transition-colors">
+          <FaExternalLinkAlt className="inline text-2xl" />
+        </a>
       </div>
     </div>
   );

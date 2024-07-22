@@ -1,10 +1,9 @@
 export const fakeContacts = [
     {
-      name: "John Doe",
-      phone: "123-456-7890",
-      email: "john@example.com",
-      linkedin: "https://www.linkedin.com/in/johndoe",
-      facebook: "https://www.facebook.com/johndoe",
-      instagram: "https://www.instagram.com/johndoe"
+      name: "Ronald RANDRIANOMENDRAY",
+      phone: "+261345059864",
+      email: "randrianomendrayarn@gmail.com",
+      linkedin: "https://www.linkedin.com/in/ronald-randrianomendray-2a6167282/",
+      facebook: "https://www.facebook.com/ron.coldcodingfire",
     }
   ];

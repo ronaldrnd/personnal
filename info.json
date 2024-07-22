@@ -1,0 +1,99 @@
+{
+    "personal_info": {
+      "name": "Ronald RANDRIANOMENDRAY",
+      "title": "Développeur Web",
+      "email": "randrianomendrayarn@gmail.com",
+      "phone_numbers": [
+        "+261 32 96 891 68",
+        "+261 34 50 598 64",
+        "+261 33 85 036 84"
+      ],
+      "address": "Andoharanofotsy",
+      "social_links": {
+        "github": "https://github.com/randrianomendrayronald",
+        "linkedin": "https://www.linkedin.com/in/ronald-randrianomendray-2339b1254/",
+        "instagram": "https://www.instagram.com/ronald_randrianomendray/",
+        "facebook": "https://www.facebook.com/ronald.randrianomendray"
+      },
+      "biography": "Passionné par les technologies web et les réseaux informatiques, je suis un jeune développeur débutant déterminé à explorer ces champs d'intérêt en constante évolution. Toujours à la recherche de nouvelles connaissances et d'opportunités pour enrichir mes compétences, je suis motivé à contribuer à des projets stimulants et à progresser professionnellement. De plus, les domaines de l'intelligence artificielle et de la cybersécurité piquent également ma curiosité, en raison de leurs défis technologiques et innovations constants."
+    },
+    "education": [
+      {
+        "degree": "Master 2 en Réseaux et Télécommunications",
+        "institution": "Institut Supérieur Polytechnique de Madagascar",
+        "year": 2023
+      },
+      {
+        "degree": "Licence en Systèmes et Réseaux Informatiques",
+        "institution": "Institut Supérieur Polytechnique de Madagascar",
+        "year": 2021
+      },
+      {
+        "degree": "Baccalauréat Série S",
+        "institution": "Lycée Saint Jean Bosco",
+        "year": 2018
+      }
+    ],
+    "experience": [
+      {
+        "title": "Développeur Web - Freelance",
+        "period": "Mars 2023 - Présent",
+        "responsibilities": [
+          "Développement de sites web et d'applications web pour divers clients.",
+          "Maintenance et mise à jour de sites existants.",
+          "Collaboration avec des designers et d'autres développeurs pour créer des solutions efficaces et conviviales."
+        ]
+      },
+      {
+        "title": "Stage en Développement Web",
+        "period": "Octobre 2022 - Février 2023",
+        "responsibilities": [
+          "Participation au développement et à la maintenance de sites web d'entreprise.",
+          "Assistance à l'équipe de développement dans la mise en œuvre de nouvelles fonctionnalités.",
+          "Correction de bugs et optimisation des performances des sites web."
+        ]
+      }
+    ],
+    "technical_skills": {
+      "programming_languages": [
+        "HTML/CSS",
+        "JavaScript",
+        "PHP",
+        "Python",
+        "Java",
+        "C++"
+      ],
+      "frameworks_and_libraries": [
+        "React",
+        "Node.js",
+        "Laravel",
+        "Bootstrap",
+        "Tailwind CSS"
+      ],
+      "tools_and_environments": [
+        "Git & GitHub",
+        "VS Code",
+        "Linux",
+        "Docker",
+        "Postman",
+        "MySQL"
+      ]
+    },
+    "soft_skills": [
+      "Travail en équipe",
+      "Apprentissage rapide",
+      "Sérieux",
+      "Dynamique",
+      "Résolution de problèmes",
+      "Curiosité"
+    ],
+    "interests": [
+      "Intelligence Artificielle",
+      "Cybersécurité",
+      "Réseaux Informatiques",
+      "Développement Personnel",
+      "Lecture",
+      "Voyages"
+    ]
+  }
+  

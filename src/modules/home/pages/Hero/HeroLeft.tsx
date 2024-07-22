@@ -1,8 +1,9 @@
 import BoxReveal from "../../../../components/magicui/box-reveal";
-import ShimmerButton from "../../../../components/magicui/shimmer-button";
+import StyledButton from "../../components/common/StyledButton";
 
 
 export default function HeroLeft() {
+
   return ( 
     <div className="min-h-full w-full max-w-[35rem] items-stretch justify-center  md:text-start  overflow-hidden pt-8 flex flex-col md:p-5 gap-10 py-10">
       <BoxReveal boxColor={"#5046e6"} duration={0.5} width="100%" >
@@ -29,12 +30,8 @@ I'm a full-stack web developer with a passion for AI, data, networking, and cybe
       <div className="flex justify-center md:justify-start">
 
       <BoxReveal boxColor={"#5046e6"} duration={0.5} >
-      <ShimmerButton className="shadow-2xl">
-        <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-          Contact Me
-        </span>
-      </ShimmerButton>
-      </BoxReveal>
+      <StyledButton text="Contact me" href="#contacts"/>
+      </BoxReveal>    
       </div>
     </div>
   );
