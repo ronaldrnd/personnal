@@ -16,69 +16,65 @@ interface ContactListProps {
 
 const ContactList: React.FC<ContactListProps> = ({ contacts }) => {
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col gap-6">
       {contacts.map((contact, index) => (
-        <div key={index} className="p-4 rounded-md flex flex-col gap-10">
-          <h3 className="text-xl font-semibold">{contact.name}</h3>
-          <ul className="mt-2 flex flex-col  gap-10 text-xl">
+        <div
+          key={index}
+          className="p-6 rounded-lg bg-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
+        >
+          {/* Contact Name */}
+          <h3 className="text-2xl font-bold text-gray-800">{contact.name}</h3>
+
+          {/* Contact Details */}
+          <ul className="mt-4 flex flex-col gap-4">
             {contact.phone && (
-              <li className="flex items-center">
-                <span className="mr-2">
-                  <FaPhone />
-                </span>
+              <li className="flex items-center text-lg text-gray-700">
+                <FaPhone className="mr-3 text-green-500" aria-label="Phone icon" />
                 <span>{contact.phone}</span>
               </li>
             )}
             {contact.email && (
-              <li className="flex items-center">
-                <span className="mr-2">
-                  <FaMessage />
-                </span>
+              <li className="flex items-center text-lg text-gray-700">
+                <FaMessage className="mr-3 text-blue-500" aria-label="Email icon" />
                 <span>{contact.email}</span>
               </li>
             )}
             {contact.linkedin && (
-              <li className="flex items-center">
-                <span className="mr-2">
-                  <FaLinkedin />
-                </span>
+              <li className="flex items-center text-lg">
+                <FaLinkedin className="mr-3 text-blue-700" aria-label="LinkedIn icon" />
                 <a
                   href={contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-300"
                 >
-                  {contact.linkedin}
+                  LinkedIn Profile
                 </a>
               </li>
             )}
             {contact.facebook && (
-              <li className="flex items-center">
-                <span className="mr-2">
-                  <FaFacebook />
-                </span>
+              <li className="flex items-center text-lg">
+                <FaFacebook className="mr-3 text-blue-600" aria-label="Facebook icon" />
                 <a
                   href={contact.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-300"
                 >
-                  {contact.facebook}
+                  Facebook Profile
                 </a>
               </li>
             )}
             {contact.instagram && (
-              <li className="flex items-center">
-                <span className="mr-2">
-                  <FaInstagram />
-                </span>
+              <li className="flex items-center text-lg">
+                <FaInstagram className="mr-3 text-pink-500" aria-label="Instagram icon" />
                 <a
                   href={contact.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-300"
                 >
-                  {contact.instagram}
+                  Instagram Profile
                 </a>
               </li>
             )}
