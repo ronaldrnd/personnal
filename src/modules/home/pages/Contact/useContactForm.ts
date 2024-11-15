@@ -1,9 +1,9 @@
-// src/hooks/useContactForm.ts
 import { useState } from 'react';
-import emailjs from 'emailjs-com';
+import axios from 'axios';
 
 const useContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const handleChange = (field: string, value: string) => {
     setFormData({
@@ -12,24 +12,35 @@ const useContactForm = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    emailjs.send(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
-      formData,
-      'YOUR_USER_ID'
-    ).then(() => {
+
+    if (!recaptchaToken) {
+      alert('Please complete the CAPTCHA!');
+      return;
+    }
+
+    try {
+      const response = await axios.post('https://back-email-kybq.onrender.com/send-email', {
+        ...formData,
+        recaptchaToken,
+      });
+
+      console.log(response);
+      
       alert('Message sent successfully!');
-    }).catch((error) => {
-      console.error('Failed to send message:', error);
-    });
+      setFormData({ name: '', email: '', message: '' }); // Reset form after submission
+    } catch (error) {
+      alert('Failed to send message');
+      console.error(error);
+    }
   };
 
   return {
     formData,
     handleChange,
     handleSubmit,
+    setRecaptchaToken, // Allow setting the reCAPTCHA token
   };
 };
 

@@ -1,12 +1,23 @@
-
+import { useState } from "react";
 import Input from "../../components/common/Input";
 import { fakeContacts } from "../../components/utils/fakeContact";
 import ContactList from "./ContactList";
 import useContactForm from "./useContactForm";
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactPage() {
-  const { formData, handleChange, handleSubmit } = useContactForm();
+  const { formData, handleChange, handleSubmit, setRecaptchaToken } = useContactForm();
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+
+  // Handle CAPTCHA response
+  const handleCaptchaChange = (value: string | null) => {
+    if (value) {
+      setRecaptchaToken(value);
+      setCaptchaVerified(true); // CAPTCHA validated
+    } else {
+      setCaptchaVerified(false); // CAPTCHA not validated
+    }
+  };
 
   return (
     <div className="flex flex-col lg:flex-row justify-center mt-8 p-6 rounded-md w-full gap-20">
@@ -41,9 +52,25 @@ export default function ContactPage() {
               rows={4}
             ></textarea>
           </div>
-          <div>
-            <button type="submit" onClick={() => handleSubmit}>send</button>
+
+          {/* reCAPTCHA */}
+          <div className="mb-4">
+            <ReCAPTCHA
+              sitekey="6LezC4AqAAAAAFONrdaOewjUyRMs7RUk7Bl43GjW" // Replace with your reCAPTCHA site key
+              onChange={handleCaptchaChange}
+            />
           </div>
+
+          {/* Submit button */}
+          {captchaVerified ? (
+            <div>
+              <button type="submit" className="px-6 py-2 bg-blue-500 text-white rounded-md">
+                Envoyer
+              </button>
+            </div>
+          ) : (
+            <p className="text-red-500">Veuillez vérifier le CAPTCHA pour envoyer le message.</p>
+          )}
         </form>
       </div>
     </div>
