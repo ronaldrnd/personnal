@@ -21,10 +21,15 @@ const useContactForm = () => {
     }
 
     try {
-      const response = await axios.post('https://back-email-kybq.onrender.com/send-email', {
-        ...formData,
-        recaptchaToken,
-      });
+      const response = await axios.post(
+        'https://back-email-kybq.onrender.com/send-email',
+        {
+          ...formData
+        },
+        {
+          withCredentials: true, // Allow sending cookies or authentication tokens with the request
+        }
+      );
 
       console.log(response);
       
