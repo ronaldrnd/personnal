@@ -25,9 +25,6 @@ const useContactForm = () => {
         'https://back-email-kybq.onrender.com/send-email',
         {
           ...formData
-        },
-        {
-          withCredentials: true, // Allow sending cookies or authentication tokens with the request
         }
       );
 

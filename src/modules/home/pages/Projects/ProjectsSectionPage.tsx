@@ -18,6 +18,8 @@ function ProjectsSectionPage() {
             repoLink={project.repoLink}
             liveLink={project.liveLink}
             detailsLink={project.detailsLink}
+            coverImage={project.coverImage}
+            images={project.images}
           />
         ))}
       </div>
